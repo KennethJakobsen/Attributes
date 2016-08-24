@@ -1,0 +1,6 @@
+C:\VSProjects\Attributes.Testing\Attributes.Testing.Console\bin\Debug\Attributes.Testing.Console.exe.config
+C:\VSProjects\Attributes.Testing\Attributes.Testing.Console\obj\Debug\Attributes.Testing.Console.csprojResolveAssemblyReference.cache
+C:\VSProjects\Attributes.Testing\Attributes.Testing.Console\bin\Debug\Attributes.Testing.Console.exe
+C:\VSProjects\Attributes.Testing\Attributes.Testing.Console\bin\Debug\Attributes.Testing.Console.pdb
+C:\VSProjects\Attributes.Testing\Attributes.Testing.Console\obj\Debug\Attributes.Testing.Console.exe
+C:\VSProjects\Attributes.Testing\Attributes.Testing.Console\obj\Debug\Attributes.Testing.Console.pdb

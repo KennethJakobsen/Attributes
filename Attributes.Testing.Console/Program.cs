@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -49,13 +50,33 @@ namespace Attributes.Testing.Console
                 {"city", "Langeskov"},
                 {"type", "House"}
             };
+            var swReflect = new Stopwatch();
+            swReflect.Start();
+            for (var i = 0; i < 100000; i++)
+            {
+                ObjectRepository.GetObject<Person>(ksj);
+                ObjectRepository.GetObject<Person>(ks);
+                ObjectRepository.GetObject<Person>(tkj);
+                ObjectRepository.GetObject<Car>(seat);
+                ObjectRepository.GetObject<Car>(cit);
+                ObjectRepository.GetObject<Home>(house);
+            }
+            swReflect.Stop();
+            System.Console.WriteLine(swReflect.Elapsed.ToString());
 
-            System.Console.WriteLine(ObjectRepository.GetObject<Person>(ksj));
-            System.Console.WriteLine(ObjectRepository.GetObject<Person>(ks));
-            System.Console.WriteLine(ObjectRepository.GetObject<Person>(tkj));
-            System.Console.WriteLine(ObjectRepository.GetObject<Car>(seat));
-            System.Console.WriteLine(ObjectRepository.GetObject<Car>(cit));
-            System.Console.WriteLine(ObjectRepository.GetObject<Home>(house));
+            var swFactory = new Stopwatch();
+            swFactory.Start();
+            for (var i = 0; i < 100000; i++)
+            {
+                ObjectFactory.CreatePerson(ksj["firstName"] as string, ksj["lastName"] as string, Convert.ToInt32(ksj["age"]));
+                ObjectFactory.CreatePerson(ks["firstName"] as string, ks["lastName"] as string, Convert.ToInt32(ks["age"]));
+                ObjectFactory.CreatePerson(tkj["firstName"] as string, tkj["lastName"] as string, Convert.ToInt32(tkj["age"]));
+                ObjectFactory.CreateCar(seat["make"] as string, seat["model"] as string, seat["flair"] as string, Convert.ToInt32(seat["year"]));
+                ObjectFactory.CreateCar(cit["make"] as string, cit["model"] as string, cit["flair"] as string, Convert.ToInt32(cit["year"]));
+                ObjectFactory.CreateHome(house["address"] as string, house["city"] as string, house["type"] as string, Convert.ToInt32(house["postCode"]));
+            }
+            swFactory.Stop();
+            System.Console.WriteLine(swFactory.Elapsed.ToString());
         }
     }
 }
